@@ -431,8 +431,9 @@ public class Notifier {
             JSONObject body = new JSONObject();
             JSONObject messageBody = new JSONObject();
             for(String key : params.keySet()){
-                body.put(key, params.get(key));
+                messageBody.put(key, params.get(key));
             }
+            body.put("message", messageBody);
             return buildData(level, body);
         } catch (JSONException e) {
             Log.e(Rollbar.TAG, "There was an error constructing the JSON payload.", e);
